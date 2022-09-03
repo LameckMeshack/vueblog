@@ -1,18 +1,14 @@
 <template>
   <div>
     <Header />
-    <div class="flex flex-wrap p-5">
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-    </div>
+    <BlogsContainer />
   </div>
 </template>
 <script>
 import Header from "@/components/Header.vue";
-import BlogCard from "@/components/BlogCard.vue";
+import BlogsContainer from "@/components/BlogsContainer.vue";
 export default {
   name: "HomePage",
-  components: { Header, BlogCard },
+  components: { Header, BlogsContainer },
 };
 </script>
