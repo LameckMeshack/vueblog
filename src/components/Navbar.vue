@@ -31,28 +31,29 @@
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0"
         >
           <router-link
-            to="/"
+            :to="{ name: 'home' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
           >
             Home
           </router-link>
           <router-link
-            to="/blog/:id"
+            :to="{ name: 'singleblog' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
           >
             Blog
           </router-link>
+
           <router-link
-            to="/login"
-            class="text-sm font-bold text-gray-800 hover:text-blue-400"
-          >
-            Login
-          </router-link>
-          <router-link
-            to="/about"
+            :to="{ name: 'about' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
           >
             About
+          </router-link>
+          <router-link
+            :to="{ name: 'login' }"
+            class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          >
+            Login
           </router-link>
         </ul>
       </nav>
