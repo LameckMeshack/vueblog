@@ -4,6 +4,7 @@
     <div class="w-3/5">
       <h1 class="text-4xl py-2 text-center text-bold">
         This is the blog title
+        <span class="text-black-500">{{ id }}</span> author
       </h1>
       <div><img src="../assets/banner2.jpeg" alt="" /></div>
       <p>
@@ -75,5 +76,10 @@
 <script>
 export default {
   name: "SingleBlog",
+  data() {
+    return {
+      id: this.$route.params.id,
+    };
+  },
 };
 </script>
