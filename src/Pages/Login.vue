@@ -5,7 +5,7 @@
     <div
       class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700"
     >
-      <form class="space-y-6" action="#">
+      <form class="space-y-6" action="#" @submit.prevent="login">
         <h3 class="text-xl font-medium text-gray-900 dark:text-white">
           Sign in to our platform
         </h3>
@@ -19,6 +19,7 @@
             type="name"
             name="name"
             id="name"
+            v-model="loginData.name"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="username"
             required=""
@@ -34,6 +35,7 @@
             type="password"
             name="password"
             id="password"
+            v-model="loginData.password"
             placeholder="••••••••"
             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             required=""
@@ -83,5 +85,18 @@
 <script>
 export default {
   name: "LoginPage",
+  data() {
+    return {
+      loginData: {
+        name: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    login() {
+      console.log(this.loginData);
+    },
+  },
 };
 </script>
