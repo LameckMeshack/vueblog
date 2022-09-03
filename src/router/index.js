@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Homepage from "../Pages/Homepage.vue";
 import Createpage from "../Pages/Create.vue";
 import Singleblog from "../Pages/SingleBlog.vue";
+import Login from "../Pages/Login.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: "/create",
     name: "create",
     component: Createpage,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
   },
   {
     path: "/blog/:id",

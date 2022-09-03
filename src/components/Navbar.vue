@@ -26,23 +26,34 @@
           </div>
         </div>
 
-        <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
         <ul
           :class="showMenu ? 'flex' : 'hidden'"
           class="flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0"
         >
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-400">
+          <router-link
+            to="/"
+            class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          >
             Home
-          </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-400">
+          </router-link>
+          <router-link
+            to="/blog/:id"
+            class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          >
+            Blog
+          </router-link>
+          <router-link
+            to="/login"
+            class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          >
+            Login
+          </router-link>
+          <router-link
+            to="/about"
+            class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          >
             About
-          </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-400">
-            Blogs
-          </li>
-          <li class="text-sm font-bold text-gray-800 hover:text-blue-400">
-            Contact Us
-          </li>
+          </router-link>
         </ul>
       </nav>
     </div>
