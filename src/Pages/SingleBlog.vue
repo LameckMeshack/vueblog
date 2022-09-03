@@ -3,21 +3,12 @@
     <!-- blog read -->
     <div class="w-3/5">
       <h1 class="text-4xl py-2 text-center text-bold">
-        This is the blog title
-        <span class="text-black-500">{{ id }}</span> author
+        {{ blog.title }}
+        <span class="text-black-500 text-sm">{{ id }}</span>
       </h1>
       <div><img src="../assets/banner2.jpeg" alt="" /></div>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptates, quod, quia, voluptate quae voluptatem quibusdam quos
-        accusantium quas dolorum quidem. Quisquam, quae. Quisquam, quae.
-        Quisquam, quae. Quisquam, quae. Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Accusamus ex sint molestiae reprehenderit maxime non
-        assumenda odio, quasi excepturi sunt quas tempore impedit consequatur
-        dolorem, explicabo dolor eligendi provident vitae? Lorem ipsum dolor
-        sit, amet consectetur adipisicing elit. Ex veniam aspernatur, excepturi
-        error enim ullam dolores cumque delectus. Incidunt error esse libero
-        sapiente temporibus ut ducimus, molestiae quos consectetur repellendus.
+        {{ blog.body }}
       </p>
       <div
         class="flex mx-auto items-center justify-center shadow-lg mt-4 mx-8 mb-4 max-w-lg"
@@ -74,12 +65,31 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "SingleBlog",
   data() {
     return {
       id: this.$route.params.id,
+      blog: {
+        title: "",
+        body: "",
+      },
     };
+  },
+  mounted: function () {
+    this.loading = true;
+    axios
+      .get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
+      .then((res) => {
+        this.loading = false;
+        this.blog = res.data;
+        // console.log(this.blog);
+      })
+      .catch((err) => {
+        this.loading = false;
+        this.error = err;
+      });
   },
 };
 </script>
