@@ -15,15 +15,14 @@
       <div class="p-5">
         <a href="#">
           <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">
-            Noteworthy technology acquisitions 2021
+            {{ title.split(" ").splice(0, 3).join(" ") }}
           </h5>
         </a>
         <p class="font-normal text-gray-700 mb-3">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          {{ content.split(" ").splice(0, 15).join(" ") }}
         </p>
         <router-link
-          :to="{ name: 'singleblog', params: { id: 1 } }"
+          :to="{ name: 'singleblog', params: { id } }"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
         >
           Read more
@@ -34,16 +33,21 @@
 </template>
 <script>
 export default {
+  // data() {
+  //   return {
+  //     id: blog,
+  //   };
+  // },
   name: "BlogCard",
+
   props: {
     id: {
-      type: Number,
       required: true,
     },
-    image: {
-      type: String,
-      required: true,
-    },
+    // image: {
+    //   type: String,
+    //   required: true,
+    // },
     title: {
       type: String,
       required: true,
