@@ -1,31 +1,39 @@
 <template>
-  <div id="app" class="bg-gray-500">
-    <Navbar />
-    <Create />
-    <!-- <Login /> -->
-    <!-- <SingleBlog /> -->
-    <!-- <Header /> -->
-    <!-- <div class="flex flex-wrap p-5">
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
-    </div> -->
+  <div id="app">
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </nav>
+    <router-view />
     <Footer />
   </div>
 </template>
-
 <script>
-// import BlogCard from "./components/BlogCard.vue";
 import Footer from "./components/Footer.vue";
-import Navbar from "./components/Navbar.vue";
-import Create from "./Pages/Create.vue";
-// import Login from "./Pages/Login.vue";
-// import SingleBlog from "./components/SingleBlog.vue";
-// import Header from "./components/Header.vue";
 export default {
   name: "App",
-  components: { Navbar, Footer, Create },
+  components: { Footer },
 };
 </script>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-<style></style>
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
