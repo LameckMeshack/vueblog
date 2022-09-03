@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="bg-gray-500">
-    <div class="flex flex-wrap">
+    <Header />
+    <div class="flex flex-wrap p-5">
       <BlogCard />
       <BlogCard />
       <BlogCard />
@@ -12,9 +13,10 @@
 <script>
 import BlogCard from "./components/BlogCard.vue";
 import Footer from "./components/Footer.vue";
+import Header from "./components/Header.vue";
 export default {
   name: "App",
-  components: { BlogCard, Footer },
+  components: { BlogCard, Footer, Header },
 };
 </script>
 
