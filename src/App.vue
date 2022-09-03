@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="bg-gray-500">
     <Navbar />
-    <Login />
+    <Create />
+    <!-- <Login /> -->
     <!-- <SingleBlog /> -->
     <!-- <Header /> -->
     <!-- <div class="flex flex-wrap p-5">
@@ -17,12 +18,13 @@
 // import BlogCard from "./components/BlogCard.vue";
 import Footer from "./components/Footer.vue";
 import Navbar from "./components/Navbar.vue";
-import Login from "./Pages/Login.vue";
+import Create from "./Pages/Create.vue";
+// import Login from "./Pages/Login.vue";
 // import SingleBlog from "./components/SingleBlog.vue";
 // import Header from "./components/Header.vue";
 export default {
   name: "App",
-  components: { Navbar, Footer, Login },
+  components: { Navbar, Footer, Create },
 };
 </script>
 
