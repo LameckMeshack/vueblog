@@ -1,7 +1,9 @@
 <template>
   <div class="flex px-32 bg-gray-100 py-10">
     <!-- blog read -->
+
     <div class="w-3/5">
+      <button @click="back">More Blogs</button>
       <h1 class="text-4xl py-2 text-center text-bold">
         {{ blog.title }}
         <span class="text-black-500 text-sm">{{ id }}</span>
@@ -76,6 +78,11 @@ export default {
         body: "",
       },
     };
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    },
   },
   mounted: function () {
     this.loading = true;
