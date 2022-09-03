@@ -4,6 +4,7 @@ import Homepage from "../Pages/Homepage.vue";
 import Createpage from "../Pages/Create.vue";
 import Singleblog from "../Pages/SingleBlog.vue";
 import Login from "../Pages/Login.vue";
+import NotFound from "../Pages/404.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,17 @@ const routes = [
     path: "/blog/:id",
     name: "singleblog",
     component: Singleblog,
+  },
+  // redirect
+  {
+    path: "/all-blogs",
+    redirect: "/",
+  },
+  // catch all 404
+  {
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: NotFound,
   },
   // {
   //   path: "/about",
