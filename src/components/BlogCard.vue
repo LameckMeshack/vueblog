@@ -22,12 +22,12 @@
           Here are the biggest enterprise technology acquisitions of 2021 so
           far, in reverse chronological order.
         </p>
-        <a
+        <router-link
+          :to="{ name: 'singleblog', params: { id: 1 } }"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
-          href="#"
         >
           Read more
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
@@ -35,5 +35,23 @@
 <script>
 export default {
   name: "BlogCard",
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
