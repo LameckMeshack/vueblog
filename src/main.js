@@ -5,9 +5,9 @@ import "./main.css";
 
 import CKEditor from "ckeditor4-vue";
 import router from "./router";
-
+import jwtpagination from "jw-vue-pagination";
 Vue.use(CKEditor);
-
+Vue.component("jw-pagination", jwtpagination);
 // Vue.config.productionTip = false;
 
 new Vue({
