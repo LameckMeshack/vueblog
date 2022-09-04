@@ -83,6 +83,8 @@
   </div>
 </template>
 <script>
+import axios from "axios";
+import { mapActions } from "vuex";
 export default {
   name: "LoginPage",
   data() {
@@ -94,8 +96,21 @@ export default {
     };
   },
   methods: {
-    login() {
-      console.log(this.loginData);
+    ...mapActions(["setUser", "setToken"]),
+    async login(e) {
+      e.preventDefault();
+      const response = await axios.post("http://localhost:4000/login", {
+        username: this.username,
+        password: this.password,
+      });
+      const { token, user } = response.data;
+      this.setUser(user);
+      this.setToken(token);
+      console.log(response.data);
+      //   console.log(token);
+      // login action
+      this.$store.dispatch("login", { token, user });
+      this.$router.push({ name: "home" });
     },
   },
 };
