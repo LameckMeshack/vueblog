@@ -44,14 +44,16 @@
           </router-link>
 
           <router-link
-            :to="{ name: 'about' }"
+            :to="{ name: 'create' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
+            v-if="isLoggedIn"
           >
-            About
+            create
           </router-link>
           <router-link
             :to="{ name: 'login' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
+            v-if="!isLoggedIn"
           >
             Login
           </router-link>
@@ -61,12 +63,16 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "NavbarComponent",
   data() {
     return {
       showMenu: false,
     };
+  },
+  computed: {
+    ...mapGetters(["isLoggedIn"]),
   },
 };
 </script>
