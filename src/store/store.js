@@ -20,6 +20,22 @@ export default new Vuex.Store({
     setBlogs(state, blogs) {
       state.blogs = blogs;
     },
+    //create blog
+    createBlog(state, blog) {
+      state.blogs.push(blog);
+    },
+    //update blog
+    updateBlog(state, blog) {
+      const index = state.blogs.findIndex((b) => b.id === blog.id);
+      if (index !== -1) {
+        state.blogs.splice(index, 1, blog);
+      }
+    },
+
+    // delete blog
+    deleteBlog(state, id) {
+      state.blogs = state.blogs.filter((blog) => blog.id !== id);
+    },
   },
 
   actions: {
@@ -32,6 +48,16 @@ export default new Vuex.Store({
     },
     setBlogs({ commit }, blogs) {
       commit("setBlogs", blogs);
+    },
+    createBlog({ commit }, blog) {
+      commit("createBlog", blog);
+    },
+    updateblog({ commit }, blog) {
+      commit("updateBlog", blog);
+    },
+    //delete
+    deleteBlog({ commit }, blog) {
+      commit("setBlogs", blog);
     },
   },
   getters: {
