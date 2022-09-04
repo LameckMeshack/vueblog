@@ -18,14 +18,16 @@ import Loading from "./Loading.vue";
 export default {
   name: "BlogsContainer",
   data() {
-    return { loading: false, blogs: null, error: "" };
+    return { loading: false, error: "" };
   },
-  //   props: {
-  // blogs: {
-  //   type: Array,
-  //   required: true,
-  // },
-  //   },
+  computed() {
+    return {
+      blogs() {
+        return this.$store.state.blogs;
+      },
+    };
+  },
+
   components: { BlogCard, Loading },
   mounted: function () {
     this.loading = true;
@@ -34,7 +36,8 @@ export default {
       .then((res) => {
         this.loading = false;
         this.blogs = res.data;
-        console.log(this.blogs);
+        // console.log(this.blogs);
+        this.$store.commit("setBlogs", this.blogs);
       })
       .catch((err) => {
         this.loading = false;
@@ -42,5 +45,4 @@ export default {
       });
   },
 };
-//fetch data from api using axios
 </script>
