@@ -28,6 +28,12 @@
           Read more
         </router-link>
         <button
+          @click="updateBlog(id)"
+          class="ml-16 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+        >
+          update
+        </button>
+        <button
           @click="deleteBlog(id)"
           class="ml-16 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
         >
@@ -58,7 +64,7 @@ export default {
   //delete request
   methods: {
     deleteBlog(id) {
-      alert("Are you sure you want to delete this blog?");
+      confirm("Are you sure you want to delete this blog?");
       fetch(`http://localhost:3000/blogs/${id}`, {
         method: "DELETE",
       })
