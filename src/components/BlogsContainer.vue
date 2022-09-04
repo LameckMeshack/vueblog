@@ -5,7 +5,7 @@
       v-for="blog in blogs"
       :key="blog.id"
       :title="blog.title"
-      :content="blog.body"
+      :body="blog.body"
       :id="blog.id"
     />
     <p v-if="error">{{ error }}</p>
@@ -36,7 +36,6 @@ export default {
       .then((res) => {
         this.loading = false;
         this.blogs = res.data;
-        // console.log(this.blogs);
         this.$store.commit("setBlogs", this.blogs);
       })
       .catch((err) => {

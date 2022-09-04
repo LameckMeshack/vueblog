@@ -22,26 +22,23 @@
             <div class="mb-4">
               <label class="text-xl text-gray-600">Image</label>
               <input
-                type="file"
-                v-on:change="onFileChange"
+                type="text"
+                v-model="formData.image"
                 class="border-2 border-gray-300 p-2 w-full"
                 name="description"
                 id="description"
                 required="required"
               />
             </div>
-
             <div class="mb-8">
-              <!-- <label class="text-xl text-gray-600">Content <span class="text-red-500">*</span></label></br> -->
-              <ckeditor
-                name="content"
-                placeholder="Write your content here..."
-                v-model="formData.content"
+              <textarea
+                name="body"
+                placeholder="Write your body here..."
+                v-model="formData.body"
                 class="border-2 border-gray-500"
               >
-              </ckeditor>
+              </textarea>
             </div>
-
             <div class="flex p-1">
               <select
                 class="border-2 border-gray-300 border-r p-2"
@@ -65,36 +62,29 @@
   </div>
 </template>
 <script>
-// import CKEditor from "@ckeditor/ckeditor4-vue";
+import axios from "axios";
 export default {
   name: "CreateForm",
   methods: {
-    onFileChange(e) {
-      const file = e.target.files[0];
-      this.image = file;
-    },
     send() {
-      const formData = new FormData();
-      formData.append("title", this.title);
-      formData.append("content", this.content);
-      //   formData.append("image", this.image);
-      //   this.$store.dispatch("createPost", formData);
-      console.log(formData.title);
+      axios
+        .post("http://localhost:3000/blogs", this.formData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
   data() {
     return {
       formData: {
         title: "",
-        content: "",
-        // onFileChange: "",
+        image: "",
+        body: "",
       },
-
-      //   editorConfig: {
-      //     // The configuration of the editor.
-      //   },
     };
   },
 };
-// CKEditor.replace("content");
 </script>
