@@ -19,7 +19,7 @@
           </h5>
         </a>
         <p class="font-normal text-gray-700 mb-3">
-          {{ content.split(" ").splice(0, 15).join(" ") }}
+          {{ body.split(" ").splice(0, 15).join(" ") }}
         </p>
         <router-link
           :to="{ name: 'singleblog', params: { id } }"
@@ -27,34 +27,48 @@
         >
           Read more
         </router-link>
+        <button
+          @click="deleteBlog(id)"
+          class="ml-16 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+        >
+          delete
+        </button>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  // data() {
-  //   return {
-  //     id: blog,
-  //   };
-  // },
   name: "BlogCard",
 
   props: {
     id: {
       required: true,
     },
-    // image: {
-    //   type: String,
-    //   required: true,
-    // },
+
     title: {
-      type: String,
+      // type: String,
       required: true,
     },
-    content: {
-      type: String,
+    body: {
+      // type: String,
       required: true,
+    },
+  },
+  //delete request
+  methods: {
+    deleteBlog(id) {
+      alert("Are you sure you want to delete this blog?");
+      fetch(`http://localhost:3000/blogs/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          this.$emit("deleteBlog", id);
+          // refresh
+          this.$router.go();
+        });
     },
   },
 };
