@@ -37,10 +37,10 @@
             Home
           </router-link>
           <router-link
-            :to="{ name: 'singleblog' }"
+            :to="{ name: 'search' }"
             class="text-sm font-bold text-gray-800 hover:text-blue-400"
           >
-            Blog
+            Search
           </router-link>
 
           <router-link

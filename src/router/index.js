@@ -5,6 +5,8 @@ import Createpage from "../Pages/Create.vue";
 import Singleblog from "../Pages/SingleBlog.vue";
 import Login from "../Pages/Login.vue";
 import NotFound from "../Pages/404.vue";
+import SearchPage from "../components/Search.vue";
+// import store from "../store/store";
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,11 @@ const routes = [
     path: "/create",
     name: "create",
     component: Createpage,
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: SearchPage,
   },
   {
     path: "/login",
@@ -48,6 +55,7 @@ const routes = [
   //   // which is lazy-loaded when the route is visited.
   //   component: () =>
   //     import(/* webpackChunkName: "about" */ "../Pages/AboutView.vue"),
+
   // },
 ];
 
@@ -56,5 +64,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+//beforeEach
+// router.beforeEach((to, from, next) => {
+//   //get login state from the store
+//   const state = store.getters["isLoggedIn"];
+//   //check if the user is logged in proceed to route create
+//   if (to.name === "create" && !state) next({ name: "login" });
+// });
 
 export default router;
