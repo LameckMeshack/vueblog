@@ -37,6 +37,7 @@ export default {
         this.loading = false;
         this.blogs = res.data;
         this.$store.commit("setBlogs", this.blogs);
+        console.log(this.$store.blogs);
       })
       .catch((err) => {
         this.loading = false;

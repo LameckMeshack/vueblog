@@ -54,6 +54,8 @@
               >
                 Submit
               </button>
+              <!-- //filter using id -->
+              {{ blogs.filter((blog) => blog.id === 1) }}
             </div>
           </form>
         </div>
@@ -63,6 +65,8 @@
 </template>
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
+
 export default {
   name: "CreateForm",
   methods: {
@@ -83,6 +87,7 @@ export default {
           console.log(error);
         });
     },
+    // filter blogs
   },
   data() {
     return {
@@ -92,6 +97,10 @@ export default {
         body: "",
       },
     };
+  },
+  //getting all blogs from the store
+  computed: {
+    ...mapGetters(["blogs"]),
   },
 };
 </script>
