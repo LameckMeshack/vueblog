@@ -62,7 +62,7 @@ export default {
         .then((response) => {
           this.loading = false;
           this.results = response.data;
-          this.message = response.someStatusMessage;
+          //   this.message = response.someStatusMessage;
         })
         .catch((error) => {
           this.loading = false;
