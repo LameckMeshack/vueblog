@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     user: null,
     token: null,
-    blogs: null,
+    blogs: [],
   },
   mutations: {
     setUser(state, user) {
@@ -63,6 +63,9 @@ export default new Vuex.Store({
   getters: {
     isLoggedIn(state) {
       return !!state.token;
+    },
+    blogs(state) {
+      return state.blogs;
     },
   },
 });
