@@ -35,7 +35,7 @@
                 name="body"
                 placeholder="Write your body here..."
                 v-model="formData.body"
-                class="border-2 border-gray-500 p-2 w-full"
+                class="border-2 border-gray-500 p-2 w-full h-96"
               >
               </textarea>
             </div>
@@ -71,12 +71,14 @@ export default {
         .post("http://localhost:3000/blogs", this.formData)
         .then((response) => {
           console.log(response);
+          this.$router.push({ name: "home" });
           this.formData = {
             title: "",
             image: "",
             body: "",
           };
         })
+
         .catch((error) => {
           console.log(error);
         });
