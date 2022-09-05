@@ -25,17 +25,19 @@
           :to="{ name: 'singleblog', params: { id } }"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
         >
-          Read more
+          Read
         </router-link>
         <button
           @click="updateBlog(id)"
           class="ml-16 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          v-if="isLoggedIn"
         >
           update
         </button>
         <button
           @click="deleteBlog(id)"
           class="ml-16 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          v-if="isLoggedIn"
         >
           delete
         </button>
@@ -44,8 +46,13 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "BlogCard",
+  computed: {
+    ...mapGetters(["isLoggedIn"]),
+  },
 
   props: {
     id: {
@@ -75,6 +82,10 @@ export default {
           // refresh
           this.$router.go();
         });
+    },
+    updateBlog(id) {
+      this.$router.push({ name: "create" });
+      return id;
     },
   },
 };
