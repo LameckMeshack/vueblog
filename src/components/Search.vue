@@ -5,72 +5,93 @@
       <input type="text" v-model="query" placeholder="search" />
     </div>
     <div class="s-results">
-      <div class="s-result-placeholder" v-if="loading">
-        <div class="placeholder-item" v-for="item in 3" :key="item">
+      <div class="s-result-placeholder">
+        <div class="placeholder-item">
           <div></div>
         </div>
       </div>
-      <div
-        class="s-result-items"
-        v-if="!loading && results.length"
-        v-for="(item, key) of results"
-        :key="key"
-      >
+      <div class="s-result-items">
         <div>
-          <div>{{ item.title }}</div>
-          <div class="category">{{ `in ${item.category}` }}</div>
+          <div v-if="!results.length">
+            <div class="s-result-item">
+              <div class="s-result-item-content">
+                <div class="s-result-item-title">No results found</div>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <BlogCard
+              v-for="result in results"
+              :key="result.id"
+              :title="result.title"
+              :body="result.body"
+              :id="result.id"
+            />
+            <!-- <div
+              v-for="result in results"
+              :key="result.id"
+              class="s-result-item"
+            >
+              <div class="s-result-item-content">
+                <div class="s-result-item-title">{{ result.title }}</div>
+                <div class="s-result-item-description">
+                  {{ result.description }}
+                </div>
+              </div>
+            </div> -->
+          </div>
         </div>
-      </div>
-      <div class="s-status-message" v-if="!loading && message">
-        <p>{{ message }}</p>
       </div>
     </div>
   </div>
 </template>
 <script>
-import axios from "axios";
+import { mapGetters } from "vuex";
+import BlogCard from "./BlogCard.vue";
+
 export default {
   name: "SearchComponent",
   data() {
     return {
+      allBlogs: [],
       query: "",
       results: [],
       loading: false,
       message: "",
     };
   },
+  computed: {
+    ...mapGetters({ blogs: "blogs" }),
+    // filteredBlogs() {
+    //   return this.allBlogs.filter((blog) => {
+    //     return blog.title.toLowerCase().includes(this.query.toLowerCase());
+    //   });
+    // },
+  },
+  created: function () {
+    this.allBlogs = this.blogs;
+  },
   watch: {
     query() {
-      if (this.query.length >= 3) {
-        this.searchItems();
-      }
-      if (this.query.length < 3) {
-        this.results = [];
-      }
-    },
-  },
-  methods: {
-    searchItems() {
       this.loading = true;
       this.message = "";
-      axios
-        .get("http://localhost:3000/blogs", {
-          data: {
-            query: this.query,
-          },
-        })
-        .then((response) => {
-          this.loading = false;
-          this.results = response.data;
-          //   this.message = response.someStatusMessage;
-        })
-        .catch((error) => {
-          this.loading = false;
-          this.message = error.someStatusMessage;
-          console.log(error);
+      this.results = [];
+      if (this.query.length > 0) {
+        this.results = this.allBlogs.filter((blog) => {
+          return blog.title.toLowerCase().includes(this.query.toLowerCase());
         });
+        console.log(this.results);
+        this.loading = false;
+        if (this.results.length === 0) {
+          this.message = "No results found";
+          console.log(this.message);
+        }
+      } else {
+        this.loading = false;
+      }
     },
   },
+  components: { BlogCard },
 };
 </script>
 

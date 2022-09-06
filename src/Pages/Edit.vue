@@ -108,8 +108,7 @@ export default {
     this.UpdateBlog = this.allBlogs.filter(
       (blog) => blog.id === parseInt(this.$route.params.id)
     );
-    console.log("here");
-    // console.log(this.UpdateBlog);
+
     this.formData.title = this.UpdateBlog[0].title;
     this.formData.image = this.UpdateBlog[0].image;
     this.formData.body = this.UpdateBlog[0].body;
