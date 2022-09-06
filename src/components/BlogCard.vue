@@ -48,10 +48,14 @@
 <script>
 import { mapGetters } from "vuex";
 
+
 export default {
   name: "BlogCard",
   computed: {
     ...mapGetters(["isLoggedIn"]),
+  },
+  data() {
+    return { loading: false, error: "", };
   },
 
   props: {
@@ -84,8 +88,9 @@ export default {
         });
     },
     updateBlog(id) {
-      this.$router.push({ name: "create" });
-      return id;
+      // get the blog from the api using id
+          this.$router.push({ name: "edit", params: { id } });
+
     },
   },
 };
