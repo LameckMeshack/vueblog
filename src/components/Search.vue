@@ -15,6 +15,7 @@
           <div v-if="!results.length">
             <div class="s-result-item">
               <div class="s-result-item-content">
+                <Loading />
                 <div class="s-result-item-title">No results found</div>
               </div>
             </div>
@@ -48,6 +49,7 @@
 <script>
 import { mapGetters } from "vuex";
 import BlogCard from "./BlogCard.vue";
+import Loading from "./Loading.vue";
 
 export default {
   name: "SearchComponent",
@@ -91,7 +93,7 @@ export default {
       }
     },
   },
-  components: { BlogCard },
+  components: { BlogCard, Loading },
 };
 </script>
 
