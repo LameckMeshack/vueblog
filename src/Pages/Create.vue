@@ -55,7 +55,7 @@
                 Submit
               </button>
               <!-- //filter using id -->
-              {{ blogs.filter((blog) => blog.id === 1) }}
+<!--              {{ blogs.filter((blog) => blog.id === 1) }}-->
             </div>
           </form>
         </div>
