@@ -6,6 +6,7 @@ import Singleblog from "../Pages/SingleBlog.vue";
 import Login from "../Pages/Login.vue";
 import NotFound from "../Pages/404.vue";
 import SearchPage from "../components/Search.vue";
+import EditPage from "../Pages/Edit.vue";
 // import store from "../store/store";
 
 Vue.use(VueRouter);
@@ -35,6 +36,11 @@ const routes = [
     path: "/blog/:id",
     name: "singleblog",
     component: Singleblog,
+  },
+  {
+    path: "/edit/:id",
+    name: "edit",
+    component: EditPage,
   },
   // redirect
   {

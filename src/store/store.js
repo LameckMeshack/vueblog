@@ -20,6 +20,10 @@ export default new Vuex.Store({
     setBlogs(state, blogs) {
       state.blogs = blogs;
     },
+    //geting blog by id
+    getBlogById(state, id) {
+      return state.blogs.find((blog) => blog.id === id);
+    },
     //create blog
     createBlog(state, blog) {
       state.blogs.push(blog);
@@ -55,6 +59,9 @@ export default new Vuex.Store({
     updateblog({ commit }, blog) {
       commit("updateBlog", blog);
     },
+    getBlogById({ commit }, id) {
+      commit("getBlogById", id);
+    },
     //delete
     deleteBlog({ commit }, blog) {
       commit("setBlogs", blog);
@@ -66,6 +73,10 @@ export default new Vuex.Store({
     },
     blogs(state) {
       return state.blogs;
+    },
+    //getting blog by id
+    blogById: (state) => (id) => {
+      return state.blogs.find((blog) => blog.id === id);
     },
   },
 });
