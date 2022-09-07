@@ -27,6 +27,20 @@ export default {
       },
     };
   },
+  //paginations for blogs from the store
+  methods: {
+    async getBlogs() {
+      this.loading = true;
+      try {
+        const res = await axios.get("http://localhost:3000/blogs");
+        this.$store.commit("setBlogs", res.data);
+        this.loading = false;
+      } catch (err) {
+        this.error = err.message;
+        this.loading = false;
+      }
+    },
+  },
 
   components: { BlogCard, Loading },
   mounted: function () {
